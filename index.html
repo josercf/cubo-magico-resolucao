@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        .container {
+            width: 500px;
+            display: grid;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .borda {
+            border: solid 1px #000;
+        }
+
+        .meio {
+            width: 900px;
+            height: auto;
+        }
+
+        .face {
+            width: 198px;
+            height: 198px;
+            float: left;
+            margin: 0 100px 50px 0;
+        }
+
+
+        .linha {}
+
+        .celula {
+            width: 64px;
+            height: 64px;
+
+        }
+
+        .celula:nth-child(1),
+        .celula:nth-child(2) {
+            border-right: none;
+        }
+
+        .cores {
+            width: 24px;
+            height: 24px;
+            margin: 2px;
+            border-radius: 50%;
+            border: 1px solid #000;
+        }
+
+        #paleta {
+            background-color: #000;
+            z-index: 100;
+            width: 42px;
+        }
+
+        .cores:hover {
+            width: 32px;
+            height: 32px;
+            border: 1px dashed #000;
+        }
+
+        .verde {
+            background-color: rgb(84, 130, 53);
+        }
+
+        .amarelo {
+            background-color: rgb(255, 192, 0);
+        }
+
+        .branco {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .azul {
+            background-color: rgb(68, 114, 196);
+        }
+
+        .vermelho {
+            background-color: rgb(92, 0, 0);
+        }
+
+        .laranja {
+            background-color: rgb(198, 89, 17);
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div>
+        <button id="desfazer">Desfazer</button>
+        <button id="resfazer">Refazer</button>
+    </div>
+
+    <div id="paleta">
+        <div class="cores verde"></div>
+        <div class="cores amarelo"></div>
+        <div class="cores branco"></div>
+        <div class="cores azul"></div>
+        <div class="cores vermelho"></div>
+        <div class="cores laranja"></div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="meio">
+            <div class="face  float-left">
+            </div>
+            <div class="face u float-left">
+                <div class="linha">
+                    <div id="U-L0-C0" class="celula f borda float-left"></div>
+                    <div id="U-L0-C1" class="celula f borda float-left"></div>
+                    <div id="U-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="U-L1-C0" class="celula f borda float-left"></div>
+                    <div id="U-L1-C1" class="celula f amarelo borda float-left"></div>
+                    <div id="U-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="U-L2-C0" class="celula f borda float-left"></div>
+                    <div id="U-L2-C1" class="celula f borda float-left"></div>
+                    <div id="U-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+        </div>
+        <div class="meio">
+            <div class="face L float-left">
+                <div class="linha">
+                    <div id="L-L0-C0" class="celula f borda float-left"></div>
+                    <div id="L-L0-C1" class="celula f borda float-left"></div>
+                    <div id="L-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="L-L1-C0" class="celula f borda float-left"></div>
+                    <div id="L-L1-C1" class="celula f vermelho borda float-left"></div>
+                    <div id="L-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="L-L2-C0" class="celula f borda float-left"></div>
+                    <div id="L-L2-C1" class="celula f borda float-left"></div>
+                    <div id="L-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+            <div class="face f float-left">
+                <div class="linha">
+                    <div id="F-L0-C0" class="celula f borda float-left"></div>
+                    <div id="F-L0-C1" class="celula f borda float-left"></div>
+                    <div id="F-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="F-L1-C0" class="celula f borda float-left"></div>
+                    <div id="F-L1-C1" class="celula f verde borda float-left"></div>
+                    <div id="F-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="F-L2-C0" class="celula f borda float-left"></div>
+                    <div id="F-L2-C1" class="celula f borda float-left"></div>
+                    <div id="F-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+            <div class="face R float-left">
+                <div class="linha">
+                    <div id="R-L0-C0" class="celula f borda float-left"></div>
+                    <div id="R-L0-C1" class="celula f borda float-left"></div>
+                    <div id="R-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="R-L1-C0" class="celula f borda float-left"></div>
+                    <div id="R-L1-C1" class="celula f laranja borda float-left"></div>
+                    <div id="R-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="R-L2-C0" class="celula f borda float-left"></div>
+                    <div id="R-L2-C1" class="celula f borda float-left"></div>
+                    <div id="R-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+        </div>
+        <div class="meio">
+            <div class="face  float-left">
+            </div>
+            <div class="face d float-left">
+                <div class="linha">
+                    <div id="D-L0-C0" class="celula f borda float-left"></div>
+                    <div id="D-L0-C1" class="celula f borda float-left"></div>
+                    <div id="D-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="D-L1-C0" class="celula f borda float-left"></div>
+                    <div id="D-L1-C1" class="celula f branco borda float-left"></div>
+                    <div id="D-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="D-L2-C0" class="celula f borda float-left"></div>
+                    <div id="D-L2-C1" class="celula f borda float-left"></div>
+                    <div id="D-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+        </div>
+        <div class="meio">
+            <div class="face  float-left">
+            </div>
+            <div class="face b float-left">
+                <div class="linha">
+                    <div id="B-L0-C0" class="celula f borda float-left"></div>
+                    <div id="B-L0-C1" class="celula f borda float-left"></div>
+                    <div id="B-L0-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="B-L1-C0" class="celula f borda float-left"></div>
+                    <div id="B-L1-C1" class="celula f azul borda float-left"></div>
+                    <div id="B-L1-C2" class="celula f borda float-left"></div>
+                </div>
+                <div class="linha">
+                    <div id="B-L2-C0" class="celula f borda float-left"></div>
+                    <div id="B-L2-C1" class="celula f borda float-left"></div>
+                    <div id="B-L2-C2" class="celula f borda float-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        let historico = [];
+        let faceU = {
+            celulas: []
+        }
+
+        window.faceU = faceU;
+
+
+        $(document).ready(() => {
+
+            $("#paleta").hide();
+            var celulaSelecionada = '';
+
+            $("#desfazer").on("click", function () {
+                let ultimaAcao = pop();
+
+                if (ultimaAcao != null) {
+                    $("#" + ultimaAcao.celula).removeClass(ultimaAcao.novaCor);
+                    $("#" + ultimaAcao.celula).addClass(ultimaAcao.corAntiga);
+                    alimentarMatriz(ultimaAcao.celula, ultimaAcao.corAntiga);
+                }
+            });
+
+            $(".cores").on("click", function () {
+                let classesCor = $(this).attr('class').split(' ');
+                let novaCor = encontrarCor(classesCor);
+
+                let classesCelulaClicada = $("#" + celulaSelecionada).attr('class').split(' ');
+                let corAtual = encontrarCor(classesCelulaClicada);
+
+                $("#" + celulaSelecionada).addClass(novaCor);
+                $("#paleta").toggle();
+
+
+                let acao = {
+                    celula: celulaSelecionada,
+                    corAntiga: corAtual,
+                    novaCor: novaCor
+                };
+                alimentarMatriz(celulaSelecionada, acao.novaCor);
+                push(acao)
+            });
+
+            $(".celula").on("click", function (event) {
+                let identificador = $(this).attr("id");
+                if (identificador.substring(2) == "L1-C1") {
+                    alert("Você não pode trocar a cor desta célula " + identificador);
+                    return;
+                }
+
+                celulaSelecionada = identificador;
+                //alert("clicou na célula: " + identificador);
+                $("#paleta").css('left', event.pageX);
+                $("#paleta").css('top', event.pageY + 10);
+                $("#paleta").css("position", "absolute");
+
+
+
+                $("#paleta").toggle();
+            });
+        });
+
+        function encontrarCor(classes) {
+            var cores = ["verde", "amarelo", "branco", "azul", "vermelho", "laranja"];
+            let cor = '';
+            for (let classe of classes) {
+                if (cores.indexOf(classe) > -1) {
+                    cor = classe
+                    break;
+                }
+            }
+
+            return cor;
+        }
+
+
+        function push(acao) {
+            historico.push(acao);
+            console.log(JSON.stringify(acao));
+        }
+
+        function pop() {
+            if (historico.length > 0) {
+                let ultimaAcao = historico.pop();
+                return ultimaAcao;
+            }
+            return null;
+        }
+
+        function alimentarMatriz(nomeCelula, cor) {
+            debugger;
+            //U-L1-C1
+            /*
+            [U,L1,C1]
+            */
+            let dados = nomeCelula.split('-');
+            let linha = dados[1].substring(1);
+            let coluna = dados[2].substring(1);
+
+            window.faceU.celulas[linha] = [];
+            window.faceU.celulas[linha][coluna] = cor;
+        }
+
+
+        function exibirMatriz() {
+            console.table(window.faceU.celulas);
+        }
+    </script>
+</body>
+
+</html>
