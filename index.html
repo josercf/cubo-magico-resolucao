@@ -241,6 +241,8 @@
 
         $(document).ready(() => {
 
+            remontarFace();
+
             $("#paleta").hide();
             var celulaSelecionada = '';
 
@@ -321,17 +323,39 @@
         }
 
         function alimentarMatriz(nomeCelula, cor) {
-            debugger;
-            //U-L1-C1
-            /*
-            [U,L1,C1]
-            */
             let dados = nomeCelula.split('-');
             let linha = dados[1].substring(1);
             let coluna = dados[2].substring(1);
 
-            window.faceU.celulas[linha] = [];
+            if (window.faceU.celulas[linha] === undefined) {
+                window.faceU.celulas[linha] = [];
+            }
+
             window.faceU.celulas[linha][coluna] = cor;
+
+            let stg = window.localStorage;
+            let faceUSerializado = JSON.stringify(window.faceU);
+            stg.setItem("faceU", faceUSerializado);
+        }
+
+        function remontarFace() {
+            //cria objeto que interage com o localstorage
+            let stg = window.localStorage;
+
+            //obtem do localstorage um objeto que a chave seja faceU
+            let faceUSerializado = stg.getItem("faceU");
+
+            //Desserializa o objeto (tranforma a string em objeto na memória do navegador)
+            window.faceU = JSON.parse(faceUSerializado);
+
+            let containerFace = $(".face.u");
+            for (let i = 0; i < window.faceU.celulas.length; i++) {
+                for (let j = 0; j < window.faceU.celulas[i].length; j++) {
+                    //U-L0-C0
+                    let celula = containerFace.find(`#U-L${i}-C${j}`);
+                    celula.addClass(window.faceU.celulas[i][j]);
+                }
+            }
         }
 
 
